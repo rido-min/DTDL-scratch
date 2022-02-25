@@ -1,0 +1,17 @@
+﻿{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:samples:anInterface;1",
+  "@type": "Interface",
+  "contents": [
+    {
+      "@type": "Telemetry",
+      "name": "currentDistance",
+      "schema": "double"
+    },
+    {
+      "@type": "Property",
+      "name": "serialNumber",
+      "schema":  "string"
+    }
+  ]
+}
