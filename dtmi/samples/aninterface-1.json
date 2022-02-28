@@ -4,14 +4,10 @@
   "@type": "Interface",
   "contents": [
     {
-      "@type": "Telemetry",
-      "name": "currentDistance",
-      "schema": "double"
-    },
-    {
       "@type": "Property",
-      "name": "serialNumber",
-      "schema":  "string"
+      "name": "interval",
+      "schema": "integer",
+      "writable" :  true
     }
   ]
 }

@@ -1,9 +1,15 @@
-﻿using Microsoft.Azure.DigitalTwins.Parser;
+﻿using Azure.IoT.ModelsRepository;
+using DTDL_scratch;
+using Microsoft.Azure.DigitalTwins.Parser;
 using Microsoft.Azure.DigitalTwins.Parser.Models;
 
-var parser = new ModelParser();
 var basePath = System.Reflection.Assembly.GetExecutingAssembly().Location +  @"./../../../../";
-var dtdl = File.ReadAllText(Path.Join(basePath, "dtmi/samples/aninterface-1.json"));
+var dtdl = File.ReadAllText(Path.Join(basePath, "dtmi/samples/anextendedinterface-1.json"));
+
+
+var dmr = new ModelsRepositoryClient(new Uri(basePath));
+var parser = new ModelParser() { DtmiResolverAsync = dmr.ParserDtmiResolver };
+
 var parserResult = await parser.ParseAsync(new string[] { dtdl });
 
 foreach (var item in parserResult.Values.Where(v=>v.EntityKind == DTEntityKind.Interface))
@@ -20,9 +26,3 @@ foreach (var item in parserResult.Values.Where(v=>v.EntityKind == DTEntityKind.I
         Console.WriteLine(" " + ModelParser.GetTermOrUri(((DTPropertyInfo)content.Value).Schema.Id));
     }
 }
-
-//var telemetries = parserResult.Where(r => r.Value.EntityKind == DTEntityKind.Telemetry);
-//foreach (var tel in telemetries)
-//{
-//    var 
-//}
