@@ -1,28 +1,15 @@
-﻿using Azure.IoT.ModelsRepository;
-using DTDL_scratch;
-using Microsoft.Azure.DigitalTwins.Parser;
-using Microsoft.Azure.DigitalTwins.Parser.Models;
+﻿using DTDL_scratch;
 
-var basePath = System.Reflection.Assembly.GetExecutingAssembly().Location +  @"./../../../../";
-var dtdl = File.ReadAllText(Path.Join(basePath, "dtmi/samples/anextendedinterface-1.json"));
+var model = await new DtdlModelParser().ParseAsync("dtmi/samples/anextendedinterface-1.json");
 
+Console.WriteLine(model.Id);
 
-var dmr = new ModelsRepositoryClient(new Uri(basePath));
-var parser = new ModelParser() { DtmiResolverAsync = dmr.ParserDtmiResolver };
-
-var parserResult = await parser.ParseAsync(new string[] { dtdl });
-
-foreach (var item in parserResult.Values.Where(v=>v.EntityKind == DTEntityKind.Interface))
+foreach  (var t in model.Telemetries)
 {
-    Console.WriteLine(item.Id);
-    foreach  (var content in ((DTInterfaceInfo)item).Contents.Where(c=>c.Value.EntityKind == DTEntityKind.Telemetry))
-    {
-        Console.Write(" [T]" + content.Value.Name);
-        Console.WriteLine(" " + ModelParser.GetTermOrUri(((DTTelemetryInfo)content.Value).Schema.Id));
-    }
-    foreach (var content in ((DTInterfaceInfo)item).Contents.Where(c => c.Value.EntityKind == DTEntityKind.Property))
-    {
-        Console.Write(" [P]" + content.Value.Name);
-        Console.WriteLine(" " + ModelParser.GetTermOrUri(((DTPropertyInfo)content.Value).Schema.Id));
-    }
+    Console.WriteLine($" [T] {t.Name} {t.DataType}");
+}
+
+foreach (var p in model.Properties)
+{
+    Console.WriteLine($" [P] {p.Name} {p.DataType}");
 }
