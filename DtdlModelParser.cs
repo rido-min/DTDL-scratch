@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.DigitalTwins.Parser;
 using Microsoft.Azure.DigitalTwins.Parser.Models;
+//using Microsoft.Azure.DigitalTwins.Parser.Models;
 using System.Collections.ObjectModel;
 
 namespace DTDL_scratch
@@ -53,7 +54,7 @@ namespace DTDL_scratch
                     {
                         Name = content.Value.Name,
                         Id = content.Value.Id.ToString(),
-                        DataType = ModelParser.GetTermOrUri(((DTTelemetryInfo)content.Value).Schema.Id)
+                        //DataType = ModelParser.GetTermOrUri(((DTTelemetryInfo)content.Value).Schema.Id)
                     };
                 }
             }
@@ -69,7 +70,7 @@ namespace DTDL_scratch
                     {
                         Name = content.Value.Name,
                         Id = content.Value.Id.ToString(),
-                        DataType = ModelParser.GetTermOrUri(((DTPropertyInfo)content.Value).Schema.Id)
+                        //DataType = ModelParser.GetTermOrUri(((DTPropertyInfo)content.Value).Schema.Id)
                     };
                 }
             }

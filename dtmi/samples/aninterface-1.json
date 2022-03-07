@@ -4,9 +4,10 @@
   "@type": "Interface",
   "contents": [
     {
-      "@type": "Property",
+      "@type": [ "Property", "Temperature" ],
       "name": "interval",
       "schema": "integer",
+      "unit" : "kelvin",
       "writable" :  true
     }
   ]
