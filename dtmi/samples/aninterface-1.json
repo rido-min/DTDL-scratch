@@ -7,8 +7,13 @@
       "@type": [ "Property", "Temperature" ],
       "name": "interval",
       "schema": "integer",
-      "unit" : "kelvin",
-      "writable" :  true
+      "unit": "kelvin",
+      "writable": true
+    },
+    {
+      "@type": [ "Telemetry" ],
+      "name": "temperature",
+      "schema": "double"
     }
   ]
 }
