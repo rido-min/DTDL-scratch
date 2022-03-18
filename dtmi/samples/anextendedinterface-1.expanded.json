@@ -1,0 +1,47 @@
+[
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:samples:anextendedInterface;1",
+    "extends": "dtmi:samples:anInterface;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Telemetry",
+        "name": "currentDistance",
+        "schema": "double"
+      },
+      {
+        "@type": "Property",
+        "name": "serialNumber",
+        "schema": "string"
+      },
+      {
+        "@type": "Component",
+        "schema": "dtmi:com:example:Thermostat;1",
+        "name": "thermostat1",
+        "displayName": "Thermostat One"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:samples:anInterface;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": [
+          "Telemetry",
+          "Temperature"
+        ],
+        "name": "temperature",
+        "schema": "double",
+        "unit": "kelvin"
+      },
+      {
+        "@type": "Property",
+        "name": "interval",
+        "schema": "integer"
+      }
+    ]
+  }
+]
