@@ -1,0 +1,15 @@
+﻿{
+  "@context": [
+    "dtmi:dtdl:context;3",
+    "dtmi:iotcentral:context;3"
+  ],
+  "@id": "dtmi:samples:centralDemo;1",
+  "@type": "Interface",
+  "contents": [
+    {
+      "@type": ["Telemetry", "Location"],
+      "name": "position1",
+      "schema": "point"
+    }
+  ]
+}
