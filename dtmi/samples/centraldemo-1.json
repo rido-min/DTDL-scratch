@@ -1,7 +1,7 @@
 ﻿{
   "@context": [
-    "dtmi:dtdl:context;3",
-    "dtmi:iotcentral:context;3"
+    "dtmi:dtdl:context;2",
+    "dtmi:iotcentral:context;2"
   ],
   "@id": "dtmi:samples:centralDemo;1",
   "@type": "Interface",
