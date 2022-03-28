@@ -1,15 +1,23 @@
 ﻿{
   "@context": [
     "dtmi:dtdl:context;3",
-    "dtmi:iotcentral:context;3"
+    "dtmi:dtdl:extension:historization;1",
+    "dtmi:dtdl:extension:quantitativeTypes;1"
   ],
   "@id": "dtmi:samples:centralDemo;1",
   "@type": "Interface",
   "contents": [
     {
-      "@type": ["Telemetry", "Location"],
-      "name": "position1",
-      "schema": "point"
+      "@type": [ "Telemetry", "Temperature"],
+      "name": "temp",
+      "schema": "double",
+      "unit" : "kelvin"
+    },
+    {
+      "@type": [ "Property", "Temperature", "Historized" ],
+      "name": "myText",
+      "schema": "integer",
+      "unit" : "kelvin"
     }
   ]
 }
