@@ -2,7 +2,7 @@
 using DTDL_scratch;
 using Microsoft.Azure.DigitalTwins.Parser;
 
-string basePath = Path.Join(System.Reflection.Assembly.GetExecutingAssembly().Location + @"./../../../../");
+string basePath = Path.Join(System.Reflection.Assembly.GetExecutingAssembly().Location + @"./../../../../../");
 string readFile (string path) => File.ReadAllText(Path.Join(basePath, path));
 
 var parser = new ModelParser() 
@@ -11,7 +11,7 @@ var parser = new ModelParser()
     DtmiResolverAsync = new ModelsRepositoryClient(new Uri(basePath)).ParserDtmiResolver 
 };
 
-var parserResult = await parser.ParseAsync(readFile("dtmi/samples/centraldemo-1.json"));
+var parserResult = await parser.ParseAsync(readFile("dtmi/samplesv2/aninterface-1.json"));
 
 foreach (var item in parserResult.Telemetries)
 {

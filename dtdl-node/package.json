@@ -1,0 +1,13 @@
+{
+  "name": "dtdl-node",
+  "version": "0.0.0",
+  "description": "dtdl-node",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "@azure/dtdl-parser": "^1.0.0-beta.2",
+    "@azure/iot-modelsrepository": "1.0.0-alpha.20220321.1"
+  }
+}

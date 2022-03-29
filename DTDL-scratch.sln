@@ -1,9 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.1.32210.238
+VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTDL-scratch", "DTDL-scratch.csproj", "{C16D4490-B565-4ECE-B25A-FAB816ACC14C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dtdl-dotnet", "dtdl-dotnet\dtdl-dotnet.csproj", "{9707725B-238D-4634-9EA1-2677840DFB94}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "dtdl-node", "dtdl-node\dtdl-node.njsproj", "{B4A1CECC-5A65-43D0-9F6E-F16A95472443}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dtmi", "dtmi", "{544EFB73-2793-41BE-9822-A4E2A82A7AD6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samplesv2", "samplesv2", "{0044B996-FB92-429E-9286-86F7C286E95C}"
+	ProjectSection(SolutionItems) = preProject
+		dtmi\samplesv2\aninterface-1.json = dtmi\samplesv2\aninterface-1.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samplesv3", "samplesv3", "{2DD1AF63-8E57-4D5D-ACE7-5D9217F26165}"
+	ProjectSection(SolutionItems) = preProject
+		dtmi\samplesv3\aninterface-1.json = dtmi\samplesv3\aninterface-1.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +25,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C16D4490-B565-4ECE-B25A-FAB816ACC14C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C16D4490-B565-4ECE-B25A-FAB816ACC14C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C16D4490-B565-4ECE-B25A-FAB816ACC14C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C16D4490-B565-4ECE-B25A-FAB816ACC14C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9707725B-238D-4634-9EA1-2677840DFB94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9707725B-238D-4634-9EA1-2677840DFB94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9707725B-238D-4634-9EA1-2677840DFB94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9707725B-238D-4634-9EA1-2677840DFB94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4A1CECC-5A65-43D0-9F6E-F16A95472443}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4A1CECC-5A65-43D0-9F6E-F16A95472443}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4A1CECC-5A65-43D0-9F6E-F16A95472443}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4A1CECC-5A65-43D0-9F6E-F16A95472443}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0044B996-FB92-429E-9286-86F7C286E95C} = {544EFB73-2793-41BE-9822-A4E2A82A7AD6}
+		{2DD1AF63-8E57-4D5D-ACE7-5D9217F26165} = {544EFB73-2793-41BE-9822-A4E2A82A7AD6}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9386305E-8284-4628-8C60-0352870BF6D6}
+		SolutionGuid = {2C2BF066-23AF-4B46-A93E-32B6413FADC9}
 	EndGlobalSection
 EndGlobal
