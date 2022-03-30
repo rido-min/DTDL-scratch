@@ -11,7 +11,7 @@ var parser = new ModelParser()
     DtmiResolverAsync = new ModelsRepositoryClient(new Uri(basePath)).ParserDtmiResolver 
 };
 
-var parserResult = await parser.ParseAsync(readFile("dtmi/samplesv2/aninterface-1.json"));
+var parserResult = await parser.ParseAsync(readFile("dtmi/samplesv3/aninterface-1.json"));
 
 foreach (var item in parserResult.Telemetries)
 {
