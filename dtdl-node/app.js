@@ -4,7 +4,7 @@ const fs = require('fs')
 const basePath = './../'
 
 async function main() {
-    const dtdlRaw = fs.readFileSync(basePath + 'dtmi/samplesv2/aninterface-1.json', 'utf-8')
+    const dtdlRaw = fs.readFileSync(basePath + 'dtmi/samplesv3/undefinedtypes-1.json', 'utf-8')
     const modelParser = createParser()
     const modelDict = await modelParser.parse([dtdlRaw])
     Object.entries(modelDict).forEach(([dtmi, dtinfo]) => {

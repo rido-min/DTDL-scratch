@@ -1,0 +1,13 @@
+{
+    "@context": "dtmi:dtdl:context;3",
+    "@id": "dtmi:samplesv3:undefinedtypes;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": ["Property", "Temperature"],
+        "name": "interval",
+        "schema": "string",
+        "writable" :  true
+      }
+    ]
+  }
