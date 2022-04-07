@@ -1,7 +1,7 @@
 {
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:samplesv2:anInterface;1",
-  "@type": "Interface",
+  "@type": ["Interface"],
   "contents": [
     {
       "@type": "Property",
