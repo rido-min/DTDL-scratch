@@ -1,4 +1,4 @@
-﻿{
+{
   "@context": "dtmi:dtdl:context;3",
   "@id": "dtmi:samplesv3:anInterface;1",
   "@type": "Interface",

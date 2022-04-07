@@ -10,8 +10,9 @@ var parser = new ModelParser()
     //Options = ModelParsingOption.RejectUndefinedExtensions,
     DtmiResolverAsync = new ModelsRepositoryClient(new Uri(basePath)).ParserDtmiResolver 
 };
+Console.WriteLine(parser.GetType().AssemblyQualifiedName.ToString());
 
-var parserResult = await parser.ParseAsync(readFile("dtmi/samplesv3/aninterface-1.json"));
+var parserResult = await parser.ParseAsync(readFile("dtmi/samplesv2/centraldemo-1.json"));
 
 foreach (var item in parserResult.Telemetries)
 {
