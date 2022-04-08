@@ -1,0 +1,24 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:samplesv2:complexTelemetry;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Telemetry",
+        "name": "myTelemetry",
+        "schema": {
+          "@type": "Object",
+          "fields": [
+            {
+              "name": "name",
+              "schema": "string"
+            },
+            {
+              "name": "value",
+              "schema": "double"
+            }
+          ]
+        }
+      }
+    ]
+  }

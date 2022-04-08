@@ -12,12 +12,17 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samplesv2", "samplesv2", "{0044B996-FB92-429E-9286-86F7C286E95C}"
 	ProjectSection(SolutionItems) = preProject
 		dtmi\samplesv2\aninterface-1.json = dtmi\samplesv2\aninterface-1.json
+		dtmi\samplesv2\geotypes-1.json = dtmi\samplesv2\geotypes-1.json
+		dtmi\samplesv2\inlineComponent-1.json = dtmi\samplesv2\inlineComponent-1.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samplesv3", "samplesv3", "{2DD1AF63-8E57-4D5D-ACE7-5D9217F26165}"
 	ProjectSection(SolutionItems) = preProject
 		dtmi\samplesv3\aninterface-1.json = dtmi\samplesv3\aninterface-1.json
+		dtmi\samplesv3\complextelemetry-1.json = dtmi\samplesv3\complextelemetry-1.json
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "validate-payload", "validate-payload\validate-payload.csproj", "{9A9D1FA2-A1C6-4F21-A505-5403F6F47DA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,10 @@ Global
 		{B4A1CECC-5A65-43D0-9F6E-F16A95472443}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4A1CECC-5A65-43D0-9F6E-F16A95472443}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4A1CECC-5A65-43D0-9F6E-F16A95472443}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A9D1FA2-A1C6-4F21-A505-5403F6F47DA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A9D1FA2-A1C6-4F21-A505-5403F6F47DA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A9D1FA2-A1C6-4F21-A505-5403F6F47DA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A9D1FA2-A1C6-4F21-A505-5403F6F47DA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
