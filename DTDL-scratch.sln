@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dtmi", "dtmi", "{544EFB73-2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samplesv2", "samplesv2", "{0044B996-FB92-429E-9286-86F7C286E95C}"
 	ProjectSection(SolutionItems) = preProject
+		dtmi\samplesv2\anextendedinterface-1.json = dtmi\samplesv2\anextendedinterface-1.json
 		dtmi\samplesv2\aninterface-1.json = dtmi\samplesv2\aninterface-1.json
 		dtmi\samplesv2\centraldemo-1.json = dtmi\samplesv2\centraldemo-1.json
 		dtmi\samplesv2\geotypes-1.json = dtmi\samplesv2\geotypes-1.json
