@@ -1,4 +1,4 @@
-﻿namespace dtdl_dotnet
+﻿namespace dtdl_dotnet_legacy
 {
     using Azure.IoT.ModelsRepository;
     using Microsoft.Azure.DigitalTwins.Parser;
@@ -18,17 +18,17 @@
             return modelDefinitions;
         }
 
-        public static IEnumerable<string> ParserDtmiResolver(this ModelsRepositoryClient client, IReadOnlyCollection<Dtmi> dtmis)
-        {
-            IEnumerable<string> dtmiStrings = dtmis.Select(s => s.AbsoluteUri);
-            List<string> modelDefinitions = new();
-            foreach (var dtmi in dtmiStrings)
-            {
-                ModelResult result = client.GetModel(dtmi, ModelDependencyResolution.Disabled);
-                modelDefinitions.Add(result.Content[dtmi]);
-            }
+        //public static IEnumerable<string> ParserDtmiResolver(this ModelsRepositoryClient client, IReadOnlyCollection<Dtmi> dtmis)
+        //{
+        //    IEnumerable<string> dtmiStrings = dtmis.Select(s => s.AbsoluteUri);
+        //    List<string> modelDefinitions = new();
+        //    foreach (var dtmi in dtmiStrings)
+        //    {
+        //        ModelResult result = client.GetModel(dtmi, ModelDependencyResolution.Disabled);
+        //        modelDefinitions.Add(result.Content[dtmi]);
+        //    }
 
-            return modelDefinitions;
-        }
+        //    return modelDefinitions;
+        //}
     }
 }

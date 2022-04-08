@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samplesv2", "samplesv2", "{0044B996-FB92-429E-9286-86F7C286E95C}"
 	ProjectSection(SolutionItems) = preProject
 		dtmi\samplesv2\aninterface-1.json = dtmi\samplesv2\aninterface-1.json
+		dtmi\samplesv2\centraldemo-1.json = dtmi\samplesv2\centraldemo-1.json
 		dtmi\samplesv2\geotypes-1.json = dtmi\samplesv2\geotypes-1.json
 		dtmi\samplesv2\inlineComponent-1.json = dtmi\samplesv2\inlineComponent-1.json
 	EndProjectSection
@@ -24,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samplesv3", "samplesv3", "{
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "validate-payload", "validate-payload\validate-payload.csproj", "{9A9D1FA2-A1C6-4F21-A505-5403F6F47DA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dtdl-dotnet-legacy", "dtdl-dotnet-legacy\dtdl-dotnet-legacy.csproj", "{07579E75-59FF-49D9-B76C-FD10433F9D8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +46,10 @@ Global
 		{9A9D1FA2-A1C6-4F21-A505-5403F6F47DA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A9D1FA2-A1C6-4F21-A505-5403F6F47DA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A9D1FA2-A1C6-4F21-A505-5403F6F47DA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07579E75-59FF-49D9-B76C-FD10433F9D8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07579E75-59FF-49D9-B76C-FD10433F9D8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07579E75-59FF-49D9-B76C-FD10433F9D8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07579E75-59FF-49D9-B76C-FD10433F9D8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

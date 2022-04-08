@@ -1,5 +1,4 @@
-﻿
-namespace DTDL_scratch
+﻿namespace validate_payload
 {
     using Microsoft.Azure.DigitalTwins.Parser;
     using Microsoft.Azure.DigitalTwins.Parser.Models;
