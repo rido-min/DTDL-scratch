@@ -8,7 +8,7 @@ string readFile (string path) => File.ReadAllText(Path.Join(basePath, path));
 var parser = new ModelParser() 
 { 
     //Options = ModelParsingOption.RejectUndefinedExtensions,
-    DtmiResolverAsync = new ModelsRepositoryClient(new Uri(basePath)).ParserDtmiResolver 
+    DtmiResolverAsync = new ModelsRepositoryClient(new Uri(basePath)).ParserDtmiResolverAsync 
 };
 Console.WriteLine(parser.GetType().AssemblyQualifiedName.ToString());
 

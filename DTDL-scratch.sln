@@ -18,11 +18,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samplesv2", "samplesv2", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samplesv3", "samplesv3", "{2DD1AF63-8E57-4D5D-ACE7-5D9217F26165}"
 	ProjectSection(SolutionItems) = preProject
+		dtmi\samplesv3\anextendedinterface-1.json = dtmi\samplesv3\anextendedinterface-1.json
 		dtmi\samplesv3\aninterface-1.json = dtmi\samplesv3\aninterface-1.json
 		dtmi\samplesv3\complextelemetry-1.json = dtmi\samplesv3\complextelemetry-1.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "validate-payload", "validate-payload\validate-payload.csproj", "{9A9D1FA2-A1C6-4F21-A505-5403F6F47DA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "validate-payload", "validate-payload\validate-payload.csproj", "{9A9D1FA2-A1C6-4F21-A505-5403F6F47DA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

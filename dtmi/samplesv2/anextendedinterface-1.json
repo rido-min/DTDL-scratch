@@ -1,7 +1,7 @@
 {
-  "@context": "dtmi:dtdl:context;3",
-  "@id": "dtmi:samplesv3:anextendedInterface;1",
-  "extends": "dtmi:samplesv3:anInterface;1",
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:samplesv2:anextendedInterface;1",
+  "extends": "dtmi:samplesv2:anInterface;1",
   "@type": "Interface",
   "contents": [
     {
