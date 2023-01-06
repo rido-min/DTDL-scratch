@@ -1,5 +1,8 @@
 {
-  "@context": "dtmi:dtdl:context;3",
+  "@context": [
+    "dtmi:dtdl:context;3",
+    "dtmi:dtdl:extension:quantitativeTypes;1"
+  ],
   "@id": "dtmi:samplesv3:anextendedInterface;1",
   "extends": "dtmi:samplesv3:anInterface;1",
   "@type": "Interface",
@@ -10,7 +13,7 @@
       "schema": "double"
     },
     {
-      "@type": "Property",
+      "@type": [ "Property"],
       "name": "serialNumber",
       "schema": "string"
     }

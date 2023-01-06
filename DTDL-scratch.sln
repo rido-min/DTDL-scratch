@@ -22,12 +22,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samplesv3", "samplesv3", "{
 	ProjectSection(SolutionItems) = preProject
 		dtmi\samplesv3\anextendedinterface-1.json = dtmi\samplesv3\anextendedinterface-1.json
 		dtmi\samplesv3\aninterface-1.json = dtmi\samplesv3\aninterface-1.json
-		dtmi\samplesv3\complextelemetry-1.json = dtmi\samplesv3\complextelemetry-1.json
+		dtmi\samplesv3\centraldemo-1.json = dtmi\samplesv3\centraldemo-1.json
+		dtmi\samplesv3\extensions-1.json = dtmi\samplesv3\extensions-1.json
+		dtmi\samplesv3\quantitativeTypes-1.json = dtmi\samplesv3\quantitativeTypes-1.json
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "validate-payload", "validate-payload\validate-payload.csproj", "{9A9D1FA2-A1C6-4F21-A505-5403F6F47DA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dtdl-dotnet-legacy", "dtdl-dotnet-legacy\dtdl-dotnet-legacy.csproj", "{07579E75-59FF-49D9-B76C-FD10433F9D8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dtdl-dotnet-legacy", "dtdl-dotnet-legacy\dtdl-dotnet-legacy.csproj", "{07579E75-59FF-49D9-B76C-FD10433F9D8C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5C8BC8E6-9DE9-46EB-9D8C-388EB755372D}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

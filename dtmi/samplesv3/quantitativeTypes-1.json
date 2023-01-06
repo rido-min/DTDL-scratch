@@ -1,0 +1,22 @@
+﻿{
+  "@context": [
+    "dtmi:dtdl:context;3",
+    "dtmi:dtdl:extension:quantitativeTypes;1"
+  ],
+  "@id": "dtmi:samplesv3:quantitativeTypes;1",
+  "@type": "Interface",
+  "contents": [
+    {
+      "@type": [ "Telemetry", "Temperature" ],
+      "name": "temp",
+      "schema": "double",
+      "unit": "kelvin"
+    },
+    {
+      "@type": [ "Property", "Distance" ],
+      "name": "myDistance",
+      "schema": "integer",
+      "unit": "mile"
+    }
+  ]
+}

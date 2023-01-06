@@ -18,7 +18,7 @@ const resolveDtmi = dtmis => {
 }
 
 async function main() {
-    const dtdlRaw = fs.readFileSync(basePath + 'dtmi/samplesv2/anextendedinterface-1.json', 'utf-8')
+    const dtdlRaw = fs.readFileSync(basePath + 'dtmi/samplesv2/aninterface-1.json', 'utf-8')
     const modelParser = createParser()
     modelParser.getModels = resolveDtmi.bind(resolveDtmi);
     const modelDict = await modelParser.parse([dtdlRaw])

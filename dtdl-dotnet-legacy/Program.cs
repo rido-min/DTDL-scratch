@@ -10,7 +10,7 @@ var parser = new ModelParser()
     //Options = ModelParsingOption.RejectUndefinedExtensions,
     DtmiResolver = new ModelsRepositoryClient(new Uri(basePath)).ParserDtmiResolverAsync
 };
-Console.WriteLine(parser.GetType().AssemblyQualifiedName?.ToString());
+Console.WriteLine(parser.GetType().Assembly.Location);
 
 var parserResult = await parser.ParseAsync(readFile("dtmi/samplesv2/centraldemo-1.json"));
 

@@ -13,9 +13,10 @@
       "schema": "double"
     },
     {
-      "@type": "Property",
+      "@type": [ "Property", "AccelerationVector" ],
       "name": "deviceStatus",
-      "schema": "string"
+      "schema": "vector",
+      "unit": "metrePerSecondSquared"
     },
     {
       "@type": "Command",

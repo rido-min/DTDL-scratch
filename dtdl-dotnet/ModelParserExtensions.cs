@@ -1,7 +1,8 @@
-﻿namespace dtdl_dotnet
+﻿using DTDLParser;
+using DTDLParser.Models;
+
+namespace dtdl_dotnet
 {
-    using Microsoft.Azure.DigitalTwins.Parser;
-    using Microsoft.Azure.DigitalTwins.Parser.Models;
     public static class DtmiExtensions
     {
         public static string ToPath(this Dtmi dtmi) => $"{dtmi.ToString().ToLowerInvariant().Replace(":", "/").Replace(";", "-")}.json";
@@ -12,7 +13,7 @@
         public class InterfaceInfo
         {
             public IReadOnlyDictionary<Dtmi, DTEntityInfo> ObjectModel;
-            DTEntityInfo root;
+            readonly DTEntityInfo root;
             public InterfaceInfo(IReadOnlyDictionary<Dtmi, DTEntityInfo> m)
             {
                 ObjectModel = m;
@@ -46,7 +47,7 @@
                     .Select(r => (DTRelationshipInfo)r.Value);
         }
 
-        public static async Task<InterfaceInfo> ParseAsync(this ModelParser parser, string jsonContent)
-            => new InterfaceInfo(await parser.ParseAsync(new string[] { jsonContent }));
+        public static async Task<InterfaceInfo> ParseModelAsync(this ModelParser parser, string jsonContent)
+            => new InterfaceInfo(await parser.ParseAsync(jsonContent));
     }
 }

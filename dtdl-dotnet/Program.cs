@@ -1,18 +1,26 @@
 ﻿using Azure.IoT.ModelsRepository;
 using dtdl_dotnet;
-using Microsoft.Azure.DigitalTwins.Parser;
+using DTDLParser;
 
 string basePath = Path.Join(System.Reflection.Assembly.GetExecutingAssembly().Location + @"./../../../../../");
 string readFile (string path) => File.ReadAllText(Path.Join(basePath, path));
 
 var parser = new ModelParser() 
 { 
-    //Options = ModelParsingOption.RejectUndefinedExtensions,
-    DtmiResolverAsync = new ModelsRepositoryClient(new Uri(basePath)).ParserDtmiResolverAsync 
+    DtmiResolverAsync = new ModelsRepositoryClient(new Uri(basePath)).ParserDtmiResolverAsync
+    //DtmiResolverAsync = DmrClient.DtmiResolverAsync
 };
-Console.WriteLine(parser.GetType().AssemblyQualifiedName?.ToString());
+Console.WriteLine($"MaxDtdlVersion: {parser.MaxDtdlVersion}");
 
-var parserResult = await parser.ParseAsync(readFile("dtmi/samplesv2/centraldemo-1.json"));
+//var st = parser.GetSupplementalTypes().Where(t => t.Value.ExtensionKind == DTExtensionKind.SemanticUnit);
+//st.ToList().ForEach(t => {
+//    Console.WriteLine($"{ModelParser.GetTermOrUri(t.Key)} {t.Key} {t.Value.ContextId}");
+//});
+
+string fileName = args.Length>0 ? args[0] : "dtmi/samplesv3/quantitativeTypes-1.json";
+Console.WriteLine(fileName);
+
+var parserResult = await parser.ParseModelAsync(readFile(fileName));
 
 foreach (var item in parserResult.Telemetries)
 {
@@ -22,4 +30,8 @@ foreach (var item in parserResult.Telemetries)
 foreach (var p in parserResult.Properties)
 {
     Console.WriteLine($"[P] {p.Name } {p.Schema.Id}");
+    Console.WriteLine(string.Join(",", p.SupplementalTypes.Select(t => t.ToString())));
+    Console.WriteLine(string.Join(",", p.SupplementalProperties.Select(t => t.ToString())));
+    //Console.WriteLine(((DTEnumValueInfo)p.SupplementalProperties["dtmi:dtdl:extension:quantitativeTypes:v1:property:unit"]).Id);
+    Console.WriteLine();
 }
