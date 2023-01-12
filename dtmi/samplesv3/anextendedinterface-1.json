@@ -1,7 +1,6 @@
 {
   "@context": [
-    "dtmi:dtdl:context;3",
-    "dtmi:dtdl:extension:quantitativeTypes;1"
+    "dtmi:dtdl:context;3"
   ],
   "@id": "dtmi:samplesv3:anextendedInterface;1",
   "extends": "dtmi:samplesv3:anInterface;1",

@@ -1,13 +1,16 @@
 {
-  "@context": "dtmi:dtdl:context;3",
+  "@context": [
+    "dtmi:dtdl:context;3",
+    "dtmi:dtdl:extension:quantitativeTypes;1"
+  ],
   "@id": "dtmi:samplesv3:anInterface;1",
   "@type": "Interface",
-  "extends": "dtmi:AAEON:BOXER_RK88;1",
   "contents": [
     {
-      "@type": "Property",
+      "@type": [ "Property", "TimeSpan" ],
       "name": "interval",
       "schema": "integer",
+      "unit" :  "second",
       "writable": true
     }
   ]

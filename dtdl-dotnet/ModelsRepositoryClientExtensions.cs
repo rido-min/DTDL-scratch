@@ -11,9 +11,7 @@
         public static async IAsyncEnumerable<string> ParserDtmiResolverAsync(this ModelsRepositoryClient client, IReadOnlyCollection<Dtmi> dtmis, 
             [EnumeratorCancellation] CancellationToken ct = default)
         {
-            IEnumerable<string> dtmiStrings = dtmis.Select(s => s.AbsoluteUri);
-            List<string> modelDefinitions = new();
-            foreach (var dtmi in dtmiStrings)
+            foreach (var dtmi in dtmis.Select(s => s.AbsoluteUri))
             {
                 ModelResult result = await client.GetModelAsync(dtmi, ModelDependencyResolution.Disabled, ct);
                 yield return result.Content[dtmi];
