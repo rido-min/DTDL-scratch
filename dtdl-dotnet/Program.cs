@@ -1,6 +1,7 @@
 ﻿using Azure.IoT.ModelsRepository;
 using dtdl_dotnet;
 using DTDLParser;
+using DTDLParser.Models;
 
 string basePath = Path.Join(System.Reflection.Assembly.GetExecutingAssembly().Location + @"./../../../../../");
 string readFile (string path) => File.ReadAllText(Path.Join(basePath, path));
@@ -24,14 +25,28 @@ var parserResult = await parser.ParseModelAsync(readFile(fileName));
 
 foreach (var item in parserResult.Telemetries)
 {
-    Console.WriteLine( $"[T] {item.Name } {item.Schema.Id}");
+    Console.WriteLine( $"[T] {item.Name } ");
+    Console.Write(ModelParser.GetTermOrUri(item.Schema.Id));
+    item.SupplementalTypes.ToList().ForEach(t => Console.Write(" " + ModelParser.GetTermOrUri(t)));
+    item.SupplementalProperties.ToList().ForEach(p => Console.Write(" " + ((DTEnumValueInfo)p.Value).Name));
+    Console.WriteLine();
 }
 
 foreach (var p in parserResult.Properties)
 {
-    Console.WriteLine($"[P] {p.Name } {p.Schema.Id}");
-    Console.WriteLine(string.Join(",", p.SupplementalTypes.Select(t => t.ToString())));
-    Console.WriteLine(string.Join(",", p.SupplementalProperties.Select(t => t.ToString())));
-    //Console.WriteLine(((DTEnumValueInfo)p.SupplementalProperties["dtmi:dtdl:extension:quantitativeTypes:v1:property:unit"]).Id);
+    Console.WriteLine($"[P] {p.Name } ");
+    Console.Write(ModelParser.GetTermOrUri(p.Schema.Id));
+    p.SupplementalTypes.ToList().ForEach(t => Console.Write(" " + ModelParser.GetTermOrUri(t)));
+    p.SupplementalProperties.ToList().ForEach(p => Console.Write(" " + ((DTEnumValueInfo)p.Value).Name));
     Console.WriteLine();
+}
+
+foreach (var c in parserResult.Commands)
+{
+    Console.WriteLine($"[C] {c.Name}");
+    var req = c.Request;
+    Console.Write($" req: {ModelParser.GetTermOrUri(req.Schema.Id)} ");
+    req.SupplementalTypes.ToList().ForEach(t => Console.Write(" " + ModelParser.GetTermOrUri(t)));
+    req.SupplementalProperties.ToList().ForEach(p => Console.Write(" " + ((DTEnumValueInfo)p.Value).Name));
+
 }

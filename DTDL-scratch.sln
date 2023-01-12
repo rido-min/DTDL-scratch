@@ -5,8 +5,6 @@ VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dtdl-dotnet", "dtdl-dotnet\dtdl-dotnet.csproj", "{9707725B-238D-4634-9EA1-2677840DFB94}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "dtdl-node", "dtdl-node\dtdl-node.njsproj", "{B4A1CECC-5A65-43D0-9F6E-F16A95472443}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dtmi", "dtmi", "{544EFB73-2793-41BE-9822-A4E2A82A7AD6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samplesv2", "samplesv2", "{0044B996-FB92-429E-9286-86F7C286E95C}"
@@ -46,10 +44,6 @@ Global
 		{9707725B-238D-4634-9EA1-2677840DFB94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9707725B-238D-4634-9EA1-2677840DFB94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9707725B-238D-4634-9EA1-2677840DFB94}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4A1CECC-5A65-43D0-9F6E-F16A95472443}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4A1CECC-5A65-43D0-9F6E-F16A95472443}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4A1CECC-5A65-43D0-9F6E-F16A95472443}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4A1CECC-5A65-43D0-9F6E-F16A95472443}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9A9D1FA2-A1C6-4F21-A505-5403F6F47DA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9A9D1FA2-A1C6-4F21-A505-5403F6F47DA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A9D1FA2-A1C6-4F21-A505-5403F6F47DA8}.Release|Any CPU.ActiveCfg = Release|Any CPU

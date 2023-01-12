@@ -12,7 +12,7 @@ var parser = new ModelParser()
 };
 Console.WriteLine(parser.GetType().Assembly.Location);
 
-var parserResult = await parser.ParseAsync(readFile("dtmi/samplesv2/centraldemo-1.json"));
+var parserResult = await parser.ParseAsync(readFile("dtmi/samplesv2/extensions-1.json"));
 
 foreach (var item in parserResult.Telemetries)
 {

@@ -17,6 +17,16 @@
       "name": "myDistance",
       "schema": "integer",
       "unit": "mile"
+    },
+    {
+      "@type": "Command",
+      "name": "reboot",
+      "request": {
+        "@type": [ "CommandRequest", "TimeSpan" ],
+        "name": "delay",
+        "schema": "integer",
+        "unit": "second"
+      }
     }
   ]
 }

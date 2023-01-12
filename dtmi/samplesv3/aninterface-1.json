@@ -2,12 +2,13 @@
   "@context": "dtmi:dtdl:context;3",
   "@id": "dtmi:samplesv3:anInterface;1",
   "@type": "Interface",
+  "extends": "dtmi:AAEON:BOXER_RK88;1",
   "contents": [
     {
       "@type": "Property",
       "name": "interval",
       "schema": "integer",
-      "writable" :  true
+      "writable": true
     }
   ]
 }

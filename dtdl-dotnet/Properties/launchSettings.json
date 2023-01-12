@@ -2,7 +2,7 @@
   "profiles": {
     "dtdl-dotnet": {
       "commandName": "Project",
-      "commandLineArgs": "dtmi/samplesv3/anextendedInterface-1.json"
+      "commandLineArgs": "dtmi/samplesv3/quantitativeTypes-1.json"
     }
   }
 }
