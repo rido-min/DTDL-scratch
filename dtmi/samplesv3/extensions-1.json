@@ -2,22 +2,22 @@
   "@context": [
     "dtmi:dtdl:context;3",
     "dtmi:dtdl:extension:historization;1",
-    "dtmi:dtdl:extension:quantitativeTypes;1"
+    "dtmi:dtdl:extension:quantitativeTypes;1",
+    "dtmi:iotcentral:context;2"
   ],
-  "@id": "dtmi:samples:centralDemo;1",
+  "@id": "dtmi:samplesv3:centralDemo",
   "@type": "Interface",
   "contents": [
     {
-      "@type": [ "Telemetry", "Temperature"],
-      "name": "temp",
-      "schema": "double",
-      "unit" : "kelvin"
+      "@type": [ "Property", "Temperature", "Historized" ],
+      "name": "temperature",
+      "schema": "integer",
+      "unit": "kelvin"
     },
     {
-      "@type": [ "Property", "Temperature", "Historized" ],
-      "name": "myText",
-      "schema": "integer",
-      "unit" : "kelvin"
+      "@type": [ "Property" ],
+      "name": "deviceStatus",
+      "schema": "vector"
     }
   ]
 }

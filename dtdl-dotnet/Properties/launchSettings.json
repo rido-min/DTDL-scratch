@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "dtdl-dotnet": {
-      "commandName": "Project",
-      "commandLineArgs": "dtmi/samplesv3/anextendedInterface-1.json"
-    }
-  }
-}

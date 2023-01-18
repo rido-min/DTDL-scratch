@@ -13,7 +13,7 @@ namespace dtdl_dotnet
         public class InterfaceInfo
         {
             public IReadOnlyDictionary<Dtmi, DTEntityInfo> ObjectModel;
-            readonly DTEntityInfo root;
+            public readonly DTEntityInfo root;
             public InterfaceInfo(IReadOnlyDictionary<Dtmi, DTEntityInfo> m)
             {
                 ObjectModel = m;

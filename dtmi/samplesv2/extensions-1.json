@@ -1,6 +1,6 @@
 {
   "@context": [
-    "dtmi:dtdl:context;3",
+    "dtmi:dtdl:context;2",
     "dtmi:dtdl:extension:historization;1"
   ],
   "@id": "dtmi:samplesv2:extensions;1",
