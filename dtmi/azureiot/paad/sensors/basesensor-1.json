@@ -1,5 +1,5 @@
 {
-  "@context": "dtmi:dtdl:context;2",
+  "@context": "dtmi:dtdl:context;3",
   "@id": "dtmi:azureiot:PaaD:Sensors:baseSensor;1",
   "@type": "Interface",
   "displayName": "Base Sensor",
@@ -11,7 +11,7 @@
     },
     {
       "@type": "Property",
-      "name": "Enabled",
+      "name": "enabled",
       "schema": "boolean"
     },
     {

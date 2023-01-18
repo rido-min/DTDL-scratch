@@ -1,7 +1,6 @@
 {
   "@context": [
-    "dtmi:dtdl:context;2", 
-    "dtmi:iotcentral:context;2"
+    "dtmi:dtdl:context;3"
   ],
   "@id": "dtmi:azureiot:PaaD:Sensors:Magnet;1",
   "@type": "Interface",
@@ -9,6 +8,8 @@
   "displayName": "Movement",
   "contents": [
     {
+
+      "@context": "dtmi:iotcentral:context;2",
       "@type": "Telemetry",
       "displayName": {
         "en": "Magnetic induction"

@@ -1,5 +1,5 @@
 {
-  "@context": "dtmi:dtdl:context;2",
+  "@context": "dtmi:dtdl:context;3",
   "@id": "dtmi:azureiot:PaaD:IoTPhone;1",
   "@type": "Interface",
   "displayName": "IoT Phone",
@@ -35,7 +35,6 @@
       },
       "name": "lightOn",
       "request": {
-        "@type": "CommandPayload",
         "displayName": {
           "en": "Parameters"
         },

@@ -1,5 +1,5 @@
 {
-  "@context": "dtmi:dtdl:context;2",
+  "@context": "dtmi:dtdl:context;3",
   "@id": "dtmi:azureiot:PaaD:Sensors:Battery;1",
   "@type": "Interface",
   "extends": ["dtmi:azureiot:PaaD:Sensors:baseSensor;1"],

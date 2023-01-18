@@ -1,11 +1,12 @@
 {
-  "@context": "dtmi:dtdl:context;2",
+  "@context": "dtmi:dtdl:context;3",
   "@id": "dtmi:azureiot:PaaD:Sensors:Pressure;1",
   "@type": "Interface",
   "extends": ["dtmi:azureiot:PaaD:Sensors:baseSensor;1"],
   "displayName": "Pressure",
   "contents": [
     {
+      "@context": "dtmi:dtdl:extension:quantitativeTypes;1",
       "@type": [
         "Telemetry",
         "Pressure"
