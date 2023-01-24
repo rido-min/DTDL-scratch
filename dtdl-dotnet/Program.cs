@@ -12,21 +12,20 @@ var parser = new ModelParser()
     //DtmiResolverAsync = DmrClient.DtmiResolverAsync
 };
 
-string dtmi = "dtmi:samplesv3:mixingversions;1";
+string dtmi = "dtmi:samplesv3:Compos;1";
 Console.WriteLine($"MaxDtdlVersion: {parser.MaxDtdlVersion}");
 
 Console.WriteLine();
 Console.WriteLine(dtmi);
 Console.WriteLine();
 
-var model = await dmrClient.GetModelAsync(dtmi, ModelDependencyResolution.Disabled);
-
-ModelParserExtensions.InterfaceInfo? parserResult = null;
-
+var modelJson = await dmrClient.GetModelAsync(dtmi, ModelDependencyResolution.Disabled);
+ModelParserExtensions.InterfaceInfo? model = null;
 
 try
 {
-    parserResult = await parser.ParseModelAsync(model.Content[dtmi]);
+    var result = await parser.ParseAsync(modelJson.Content[dtmi]);
+    model = new ModelParserExtensions.InterfaceInfo(result, new Dtmi(dtmi));
 }
 catch (ParsingException pex)
 {
@@ -44,7 +43,7 @@ catch (ParsingException pex)
 }
 
 
-foreach (var item in parserResult.Telemetries)
+foreach (var item in model.Telemetries)
 {
     Console.WriteLine( $"[T] {item.Name } ");
     Console.Write(ModelParser.GetTermOrUri(item.Schema.Id));
@@ -54,7 +53,7 @@ foreach (var item in parserResult.Telemetries)
     Console.WriteLine();
 }
 
-foreach (var p in parserResult.Properties)
+foreach (var p in model.Properties)
 {
     Console.WriteLine($"[P] {p.Name } ");
     Console.Write(ModelParser.GetTermOrUri(p.Schema.Id));
@@ -72,7 +71,7 @@ foreach (var p in parserResult.Properties)
     Console.WriteLine();
 }
 
-foreach (var c in parserResult.Commands)
+foreach (var c in model.Commands)
 {
     Console.WriteLine($"[C] {c.Name}");
     if (c.Request != null)
@@ -93,11 +92,11 @@ foreach (var c in parserResult.Commands)
 }
 
 
-foreach (var compo in parserResult.Components)
+foreach (var compo in model.Components)
 {
     Console.WriteLine($"[Co] {compo.Name} {compo.Id}");
 
-    DTInterfaceInfo compoDef = (DTInterfaceInfo)parserResult.ObjectModel.First(o => o.Key == compo.Schema.Id).Value;
+    DTInterfaceInfo compoDef = (DTInterfaceInfo)model.ObjectModel.First(o => o.Key == compo.Schema.Id).Value;
     var compoTels = compoDef.Contents.Where(c => c.Value.EntityKind == DTEntityKind.Telemetry).Select(t => (DTTelemetryInfo)t.Value);
     
     foreach (var t in compoTels)

@@ -23,6 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samplesv3", "samplesv3", "{
 		dtmi\samplesv3\aninterface-1.json = dtmi\samplesv3\aninterface-1.json
 		dtmi\samplesv3\centraldemo-1.json = dtmi\samplesv3\centraldemo-1.json
 		dtmi\samplesv3\extensions-1.json = dtmi\samplesv3\extensions-1.json
+		dtmi\samplesv3\compos-1.json = dtmi\samplesv3\compos-1.json
 		dtmi\samplesv3\mixingversions-1.json = dtmi\samplesv3\mixingversions-1.json
 		dtmi\samplesv3\quantitativeTypes-1.json = dtmi\samplesv3\quantitativeTypes-1.json
 	EndProjectSection

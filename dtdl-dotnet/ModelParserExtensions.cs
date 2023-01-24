@@ -14,11 +14,13 @@ namespace dtdl_dotnet
         {
             public IReadOnlyDictionary<Dtmi, DTEntityInfo> ObjectModel;
             public readonly DTEntityInfo root;
-            public InterfaceInfo(IReadOnlyDictionary<Dtmi, DTEntityInfo> m)
+
+            public InterfaceInfo(IReadOnlyDictionary<Dtmi, DTEntityInfo> m, Dtmi rootDtmi)
             {
                 ObjectModel = m;
-                root = m.Values.Where(v => v.EntityKind == DTEntityKind.Interface).First(e => e.ChildOf == null);
+                root = m.Values.Where(v => v.EntityKind == DTEntityKind.Interface).First(e => e.Id == rootDtmi );
             }
+
             public string Id => root.Id.ToString();
 
             public IEnumerable<DTTelemetryInfo> Telemetries =>
@@ -46,8 +48,5 @@ namespace dtdl_dotnet
                     .Where(c => c.Value.EntityKind == DTEntityKind.Relationship)
                     .Select(r => (DTRelationshipInfo)r.Value);
         }
-
-        public static async Task<InterfaceInfo> ParseModelAsync(this ModelParser parser, string jsonContent)
-            => new InterfaceInfo(await parser.ParseAsync(jsonContent));
     }
 }

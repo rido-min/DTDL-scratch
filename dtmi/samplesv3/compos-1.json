@@ -1,0 +1,27 @@
+{
+	"@context": "dtmi:dtdl:context;3",
+	"@id": "dtmi:samplesv3:Compos;1",
+	"@type": "Interface",
+	"contents": [
+		{
+			"@type": "Component",
+			"name": "myCompo",
+			"schema": {
+				"@type": "Interface",
+				"@id": "dtmi:samplesv2:inlineComponent:myCompo",
+				"contents": [
+					{
+						"@type": "Property",
+						"name": "myProp",
+						"schema": "string"
+					}
+				]
+			}
+		},
+		{
+			"@type": "Component",
+			"name": "compoWithTypes",
+			"schema": "dtmi:samplesv3:quantitativeTypes;1"
+		}
+	]
+}
