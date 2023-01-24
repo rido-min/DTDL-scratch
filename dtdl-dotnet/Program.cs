@@ -12,7 +12,7 @@ var parser = new ModelParser()
     //DtmiResolverAsync = DmrClient.DtmiResolverAsync
 };
 
-string dtmi = "dtmi:samplesv3:mixingversions;1";
+string dtmi = "dtmi:samplesv3:inlinedemo;1";
 Console.WriteLine($"MaxDtdlVersion: {parser.MaxDtdlVersion}");
 
 Console.WriteLine();
@@ -26,7 +26,8 @@ ModelParserExtensions.InterfaceInfo? parserResult = null;
 
 try
 {
-    parserResult = await parser.ParseModelAsync(model.Content[dtmi]);
+    var dictParsed = await parser.ParseAsync(model.Content[dtmi]);
+    parserResult = new ModelParserExtensions.InterfaceInfo(dictParsed, new Dtmi(dtmi));
 }
 catch (ParsingException pex)
 {
@@ -48,9 +49,8 @@ foreach (var item in parserResult.Telemetries)
 {
     Console.WriteLine( $"[T] {item.Name } ");
     Console.Write(ModelParser.GetTermOrUri(item.Schema.Id));
-    item.SupplementalProperties.ToList().ForEach(p => Console.Write(" " + ((DTEnumValueInfo)p.Value).Name));
-    Console.WriteLine("Supplemental Types: ");
     item.SupplementalTypes.ToList().ForEach(t => Console.Write("   " + ModelParser.GetTermOrUri(t)));
+    item.SupplementalProperties.ToList().ForEach(p => Console.Write(" " + ((DTEnumValueInfo)p.Value).Name));
     Console.WriteLine();
 }
 
@@ -58,6 +58,7 @@ foreach (var p in parserResult.Properties)
 {
     Console.WriteLine($"[P] {p.Name } ");
     Console.Write(ModelParser.GetTermOrUri(p.Schema.Id));
+    p.SupplementalTypes.ToList().ForEach(t => Console.Write(" " + ModelParser.GetTermOrUri(t)));
     if (p.LanguageMajorVersion == 2)
     {
         p.SupplementalProperties.ToList().ForEach(p => Console.Write(" " + ModelParser.GetTermOrUri(((DTUnitInfo)p.Value).Id)));
@@ -66,7 +67,6 @@ foreach (var p in parserResult.Properties)
     {
         p.SupplementalProperties.ToList().ForEach(p => Console.Write(" " + ((DTEnumValueInfo)p.Value).Name));
     }
-    p.SupplementalTypes.ToList().ForEach(t => Console.Write(" " + ModelParser.GetTermOrUri(t)));
     Console.WriteLine();
     p.UndefinedTypes.ToList().ForEach(u => Console.Write(u));
     Console.WriteLine();
@@ -103,8 +103,8 @@ foreach (var compo in parserResult.Components)
     foreach (var t in compoTels)
     {
         Console.Write($"    [CoT] {t.Name} {ModelParser.GetTermOrUri(t.Schema.Id)}");
-        t.SupplementalProperties.ToList().ForEach(p => Console.Write(" " + ((DTEnumValueInfo)p.Value).Name));
         t.SupplementalTypes.ToList().ForEach(t => Console.Write("   " + ModelParser.GetTermOrUri(t)));
+        t.SupplementalProperties.ToList().ForEach(p => Console.Write(" " + ((DTEnumValueInfo)p.Value).Name));
         Console.WriteLine();
     }
 
@@ -115,8 +115,8 @@ foreach (var compo in parserResult.Components)
     foreach(var p in compProps)
     {
         Console.Write($"    [CoP] {p.Name} {ModelParser.GetTermOrUri(p.Schema.Id)}");
-        p.SupplementalProperties.ToList().ForEach(p => Console.Write("    " + ((DTEnumValueInfo)p.Value).Name));
         p.SupplementalTypes.ToList().ForEach(t => Console.Write("     " + ModelParser.GetTermOrUri(t)));
+        p.SupplementalProperties.ToList().ForEach(p => Console.Write("    " + ((DTEnumValueInfo)p.Value).Name));
         Console.WriteLine();
     }
 

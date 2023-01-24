@@ -25,6 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samplesv3", "samplesv3", "{
 		dtmi\samplesv3\extensions-1.json = dtmi\samplesv3\extensions-1.json
 		dtmi\samplesv3\mixingversions-1.json = dtmi\samplesv3\mixingversions-1.json
 		dtmi\samplesv3\quantitativeTypes-1.json = dtmi\samplesv3\quantitativeTypes-1.json
+		dtmi\samplesv3\inlinedemo-1.json = dtmi\samplesv3\inlinedemo-1.json
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "validate-payload", "validate-payload\validate-payload.csproj", "{9A9D1FA2-A1C6-4F21-A505-5403F6F47DA8}"

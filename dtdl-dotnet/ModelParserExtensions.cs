@@ -19,6 +19,13 @@ namespace dtdl_dotnet
                 ObjectModel = m;
                 root = m.Values.Where(v => v.EntityKind == DTEntityKind.Interface).First(e => e.ChildOf == null);
             }
+
+            public InterfaceInfo(IReadOnlyDictionary<Dtmi, DTEntityInfo> m, Dtmi dtmi)
+            {
+                ObjectModel = m;
+                root = m[dtmi];
+            }
+
             public string Id => root.Id.ToString();
 
             public IEnumerable<DTTelemetryInfo> Telemetries =>
