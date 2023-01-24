@@ -4,28 +4,31 @@ using DTDLParser;
 using DTDLParser.Models;
 
 string basePath = Path.Join(System.Reflection.Assembly.GetExecutingAssembly().Location + @"./../../../../../");
-string readFile (string path) => File.ReadAllText(Path.Join(basePath, path));
+var dmrClient = new ModelsRepositoryClient(new Uri(basePath));
 
 var parser = new ModelParser() 
 { 
-    //Options = ModelParsingOption.AllowUndefinedExtensions,
-    DtmiResolverAsync = new ModelsRepositoryClient(new Uri(basePath)).ParserDtmiResolverAsync
+    DtmiResolverAsync = dmrClient.ParserDtmiResolverAsync
     //DtmiResolverAsync = DmrClient.DtmiResolverAsync
 };
+
+string dtmi = "dtmi:samplesv3:mixingversions;1";
 Console.WriteLine($"MaxDtdlVersion: {parser.MaxDtdlVersion}");
 
+Console.WriteLine();
+Console.WriteLine(dtmi);
+Console.WriteLine();
 
-//string fileName = "dtmi/samplesv3/extensions-1.json";
-string fileName = "dtmi/azureiot/paad/iotphone-1.json";
-Console.WriteLine(fileName);
+var model = await dmrClient.GetModelAsync(dtmi, ModelDependencyResolution.Disabled);
 
-ModelParserExtensions.InterfaceInfo parserResult = null;
+ModelParserExtensions.InterfaceInfo? parserResult = null;
+
 
 try
 {
-    parserResult = await parser.ParseModelAsync(readFile(fileName));
+    parserResult = await parser.ParseModelAsync(model.Content[dtmi]);
 }
-catch (DTDLParser.ParsingException pex)
+catch (ParsingException pex)
 {
     Console.WriteLine();
     Console.Error.WriteLine(pex.Message);
@@ -55,7 +58,14 @@ foreach (var p in parserResult.Properties)
 {
     Console.WriteLine($"[P] {p.Name } ");
     Console.Write(ModelParser.GetTermOrUri(p.Schema.Id));
-    p.SupplementalProperties.ToList().ForEach(p => Console.Write(" " + ((DTEnumValueInfo)p.Value).Name));
+    if (p.LanguageMajorVersion == 2)
+    {
+        p.SupplementalProperties.ToList().ForEach(p => Console.Write(" " + ModelParser.GetTermOrUri(((DTUnitInfo)p.Value).Id)));
+    }
+    else
+    {
+        p.SupplementalProperties.ToList().ForEach(p => Console.Write(" " + ((DTEnumValueInfo)p.Value).Name));
+    }
     p.SupplementalTypes.ToList().ForEach(t => Console.Write(" " + ModelParser.GetTermOrUri(t)));
     Console.WriteLine();
     p.UndefinedTypes.ToList().ForEach(u => Console.Write(u));
@@ -72,11 +82,15 @@ foreach (var c in parserResult.Commands)
         req.SupplementalTypes.ToList().ForEach(t => Console.Write(" " + ModelParser.GetTermOrUri(t)));
         req.SupplementalProperties.ToList().ForEach(p => Console.Write(" " + ((DTEnumValueInfo)p.Value).Name));
     }
+    if (c.Response != null)
+    {
+        var resp = c.Response;
+        Console.Write($" resp: {ModelParser.GetTermOrUri(resp.Schema.Id)}");
+        resp.SupplementalTypes.ToList().ForEach(t => Console.Write(" " + ModelParser.GetTermOrUri(t)));
+        resp.SupplementalProperties.ToList().ForEach(p => Console.Write(" " + ((DTEnumValueInfo)p.Value).Name));
+    }
     Console.WriteLine();
 }
-
-var batCo = parserResult.ObjectModel.First(x => x.Key == new Dtmi(new Uri("dtmi:azureiot:PaaD:Sensors:Battery;1")));
-
 
 
 foreach (var compo in parserResult.Components)
@@ -104,6 +118,29 @@ foreach (var compo in parserResult.Components)
         p.SupplementalProperties.ToList().ForEach(p => Console.Write("    " + ((DTEnumValueInfo)p.Value).Name));
         p.SupplementalTypes.ToList().ForEach(t => Console.Write("     " + ModelParser.GetTermOrUri(t)));
         Console.WriteLine();
-        p.UndefinedTypes.ToList().ForEach(u => Console.Write(u));
+    }
+
+    var compCmds = compoDef.Contents
+                   .Where(c => c.Value.EntityKind == DTEntityKind.Command)
+                   .Select(t => (DTCommandInfo)t.Value);
+
+    foreach (var c in compCmds)
+    {
+        Console.Write($"    [CoC] {c.Name}  ");
+        if (c.Request != null)
+        {
+            var req = c.Request;
+            Console.Write($"     req: {ModelParser.GetTermOrUri(req.Schema.Id)} ");
+            req.SupplementalTypes.ToList().ForEach(t => Console.Write("    " + ModelParser.GetTermOrUri(t)));
+            req.SupplementalProperties.ToList().ForEach(p => Console.Write("    " + ((DTEnumValueInfo)p.Value).Name));
+        }
+        if (c.Response != null)
+        {
+            var resp = c.Response;
+            Console.Write($" resp: {ModelParser.GetTermOrUri(resp.Schema.Id)}");
+            resp.SupplementalTypes.ToList().ForEach(t => Console.Write("    " + ModelParser.GetTermOrUri(t)));
+            resp.SupplementalProperties.ToList().ForEach(p => Console.Write("     " + ((DTEnumValueInfo)p.Value).Name));
+        }
+        Console.WriteLine();
     }
 }

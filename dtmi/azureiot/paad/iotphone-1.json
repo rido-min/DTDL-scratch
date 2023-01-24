@@ -6,6 +6,11 @@
   "contents": [
     {
       "@type": "Property",
+      "name": "imei",
+      "schema": "string"
+    },
+    {
+      "@type": "Property",
       "name": "AppTheme",
       "writable": true,
       "schema": {

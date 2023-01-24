@@ -1,5 +1,5 @@
 {
-  "@context": "dtmi:dtdl:context;3",
+  "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:azureiot:PaaD:Sensors:baseSensor;1",
   "@type": "Interface",
   "displayName": "Base Sensor",
@@ -16,10 +16,14 @@
     },
     {
       "@type": "Command",
-      "name": "reboot",
+      "name": "rebootSensor",
       "request": {
         "name": "delay",
         "schema": "integer"
+      },
+      "response": {
+        "name": "accepted",
+        "schema" :  "boolean"
       }
     }
   ]

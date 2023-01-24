@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.IoT.ModelsRepository" Version="1.0.0-preview.5" />
-    <PackageReference Include="DTDLParser" Version="1.0.38-g51c38cefa2" />
+    <PackageReference Include="DTDLParser" Version="1.0.40-gc0e0973f94" />
   </ItemGroup>
 
   <ItemGroup>

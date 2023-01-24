@@ -1,0 +1,26 @@
+{
+  "@context": "dtmi:dtdl:context;3",
+  "@id": "dtmi:samplesv3:mixingversions;1",
+  "@type": "Interface",
+  "contents": [
+    {
+      "@context": [
+        "dtmi:dtdl:context;2"
+      ],
+      "@type": [ "Property", "Temperature" ],
+      "name": "temperaturev2",
+      "schema": "integer",
+      "unit": "kelvin"
+    },
+    {
+      "@context": [
+        "dtmi:dtdl:context;3",
+        "dtmi:dtdl:extension:quantitativeTypes;1"
+      ],
+      "@type": [ "Property", "Temperature" ],
+      "name": "temperaturev3",
+      "schema": "integer",
+      "unit": "kelvin"
+    }
+  ]
+}
