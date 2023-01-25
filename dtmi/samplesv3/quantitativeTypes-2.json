@@ -1,0 +1,93 @@
+﻿{
+  "@context": [
+    "dtmi:dtdl:context;3",
+    "dtmi:dtdl:extension:quantitativeTypes;1"
+  ],
+  "@id": "dtmi:samplesv3:quantitativeTypes;2",
+  "@type": "Interface",
+  "contents": [
+    {
+      "@type": [ "Telemetry", "Temperature" ],
+      "name": "temp",
+      "schema": "double",
+      "unit": "kelvin"
+    },
+    {
+      "@type": [ "Property", "Distance" ],
+      "name": "myDistance",
+      "schema": "integer",
+      "unit": "mile"
+    },
+    {
+      "@type": "Command",
+      "name": "reboot",
+      "request": {
+        "@type": [ "CommandRequest", "TimeSpan" ],
+        "name": "delay",
+        "schema": "integer",
+        "unit": "second"
+      }
+    },
+    {
+      "@type": "Telemetry",
+      "name": "people",
+      "schema": "dtmi:mySchemas:myObject;1"
+    }
+  ],
+  "schemas": [
+    {
+      "@id": "dtmi:com:example:baseSchema;1",
+      "@type": "Map",
+      "mapKey": {
+        "name": "myKey",
+        "schema": "string"
+      },
+      "mapValue": {
+        "@type": [ "MapValue", "Distance" ],
+        "name": "count",
+        "schema": "double",
+        "unit": "metre"
+      }
+    },
+    {
+      "@id": "dtmi:mySchemas:ArrayOfDates;1",
+      "@type": "Array",
+      "elementSchema": "dateTime"
+    },
+    {
+      "@id": "dtmi:mySchemas:OffOnEnum;1",
+      "@type": "Enum",
+      "valueSchema": "integer",
+      "enumValues": [
+        {
+          "name": "On",
+          "enumValue": 1
+        },
+        {
+          "name": "Off",
+          "enumValue": 0
+        }
+      ]
+    },
+    {
+      "@type": "Object",
+      "@id": "dtmi:mySchemas:myObject;1",
+      "fields": [
+        {
+          "name": "name",
+          "schema": "string"
+        },
+        {
+          "name": "age",
+          "schema": "integer"
+        },
+        {
+          "@type": ["Field", "Mass"],
+          "name": "weigth",
+          "schema": "double",
+          "unit":  "kilogram"
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,6 @@
 ﻿using DTDLParser;
 using DTDLParser.Models;
 using System.Text;
-using System.Windows.Markup;
 
 namespace dtdl_dotnet
 {
@@ -14,7 +13,7 @@ namespace dtdl_dotnet
     {
         public static string Print(this DTSchemaInfo s)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             switch (s.EntityKind)
             {
                 case DTEntityKind.Map:
@@ -46,10 +45,17 @@ namespace dtdl_dotnet
 
         public static string Print(this DTTelemetryInfo t, int pad = 0)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             sb.Append(" ".PadRight(pad));
             sb.Append($"[T] {t.Name} ");
-            sb.Append(ModelParser.GetTermOrUri(t.Schema.Id));
+            if (t.Schema.DefinedIn == t.DefinedIn)
+            {
+                sb.Append(t.Schema.Print());
+            }
+            else
+            {
+                sb.Append(ModelParser.GetTermOrUri(t.Schema.Id));
+            }
             t.SupplementalTypes.ToList().ForEach(t => sb.Append(" " + ModelParser.GetTermOrUri(t)));
             if (t.LanguageMajorVersion == 2)
             {
@@ -64,7 +70,7 @@ namespace dtdl_dotnet
 
         public static string Print(this DTPropertyInfo p, int pad = 0)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             sb.Append(" ".PadRight(pad));
             sb.Append($"[P] {p.Name} ");
             if (p.Schema.DefinedIn == p.DefinedIn)
@@ -89,20 +95,34 @@ namespace dtdl_dotnet
 
         public static string Print(this DTCommandInfo c, int pad = 0)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             sb.Append(" ".PadRight(pad));
             sb.Append($"[C] {c.Name}");
             if (c.Request != null)
             {
                 var req = c.Request;
-                sb.Append($" req: {ModelParser.GetTermOrUri(req.Schema.Id)} ");
+                if (req.Schema.DefinedIn == req.DefinedIn)
+                {
+                    sb.Append($" req: {req.Schema.Print()} ");
+                }
+                else
+                {
+                    sb.Append($" req: {ModelParser.GetTermOrUri(req.Schema.Id)} ");
+                }
                 req.SupplementalTypes.ToList().ForEach(t => sb.Append(" " + ModelParser.GetTermOrUri(t)));
                 req.SupplementalProperties.ToList().ForEach(p => sb.Append(" " + ((DTEnumValueInfo)p.Value).Name));
             }
             if (c.Response != null)
             {
                 var resp = c.Response;
-                sb.Append($" resp: {ModelParser.GetTermOrUri(resp.Schema.Id)}");
+                if (resp.Schema.DefinedIn == resp.DefinedIn)
+                {
+                    sb.Append($" resp: {resp.Schema.Print()}");
+                }
+                else
+                {
+                    sb.Append($" resp: {ModelParser.GetTermOrUri(resp.Schema.Id)}");
+                }
                 resp.SupplementalTypes.ToList().ForEach(t => sb.Append(" " + ModelParser.GetTermOrUri(t)));
                 resp.SupplementalProperties.ToList().ForEach(p => sb.Append(" " + ((DTEnumValueInfo)p.Value).Name));
             }
@@ -111,7 +131,7 @@ namespace dtdl_dotnet
 
         public static string Print(this DTComponentInfo compo, DTInterfaceInfo compoDef)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             sb.AppendLine($"[Co] {compo.Name} ");
             var compoTels = compoDef.Contents.Where(c => c.Value.EntityKind == DTEntityKind.Telemetry).Select(t => (DTTelemetryInfo)t.Value);
             compoTels.ToList().ForEach(t => sb.AppendLine(t.Print(2)));
