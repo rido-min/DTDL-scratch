@@ -1,6 +1,7 @@
 ﻿using DTDLParser;
 using DTDLParser.Models;
 using System.Text;
+using System.Windows.Markup;
 
 namespace dtdl_dotnet
 {
@@ -11,6 +12,38 @@ namespace dtdl_dotnet
 
     public static class ModelParserExtensions
     {
+        public static string Print(this DTSchemaInfo s)
+        {
+            StringBuilder sb = new StringBuilder();
+            switch (s.EntityKind)
+            {
+                case DTEntityKind.Map:
+                    DTMapInfo map = (DTMapInfo)s;
+                    sb.Append($"{s.EntityKind}<{ModelParser.GetTermOrUri(map.MapKey.Schema.Id)},{ModelParser.GetTermOrUri(map.MapValue.Schema.Id)}> ");
+                    map.MapValue.SupplementalTypes.ToList().ForEach(st => sb.Append(ModelParser.GetTermOrUri(st)));
+                    sb.Append(' ');
+                    map.MapValue.SupplementalProperties.ToList().ForEach(sp => sb.Append(((DTEnumValueInfo)sp.Value).Name));
+                    break;
+                case DTEntityKind.Array:
+                    DTArrayInfo arr = (DTArrayInfo)s;
+                    sb.Append($"{s.EntityKind}<{ModelParser.GetTermOrUri(arr.ElementSchema.Id)}>");
+                    break;
+                case DTEntityKind.Enum:
+                    DTEnumInfo en = (DTEnumInfo)s;
+                    sb.Append($"{s.EntityKind} :{ModelParser.GetTermOrUri(en.ValueSchema.Id)} [ ");
+                    en.EnumValues.ToList().ForEach(e => sb.Append($"{e.Name} {e.EnumValue}, "));
+                    sb.Append(" ]");
+                    break;
+                case DTEntityKind.Object:
+                    DTObjectInfo o = (DTObjectInfo)s;
+                    sb.Append($"{s.EntityKind} ");
+                    o.Fields.ToList().ForEach(f => sb.Append($"[{f.Name} :{ModelParser.GetTermOrUri(f.Schema.Id)}] "));
+                    break;
+            }
+            
+            return sb.ToString();
+        }
+
         public static string Print(this DTTelemetryInfo t, int pad = 0)
         {
             StringBuilder sb = new StringBuilder();
@@ -34,7 +67,14 @@ namespace dtdl_dotnet
             StringBuilder sb = new StringBuilder();
             sb.Append(" ".PadRight(pad));
             sb.Append($"[P] {p.Name} ");
-            sb.Append(ModelParser.GetTermOrUri(p.Schema.Id));
+            if (p.Schema.DefinedIn == p.DefinedIn)
+            {
+                sb.Append(p.Schema.Print());
+            }
+            else
+            {
+                sb.Append(ModelParser.GetTermOrUri(p.Schema.Id));
+            }    
             p.SupplementalTypes.ToList().ForEach(t => sb.Append(" " + ModelParser.GetTermOrUri(t)));
             if (p.LanguageMajorVersion == 2)
             {

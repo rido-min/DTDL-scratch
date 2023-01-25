@@ -37,6 +37,13 @@
 			"unit": "kelvin"
 		},
 		{
+			"@context": "dtmi:dtdl:context;2",
+			"@type": [ "Property", "Temperature" ],
+			"name": "propTempInKelvin_2",
+			"schema": "double",
+			"unit": "kelvin"
+		},
+		{
 			"@type": [ "Telemetry", "Temperature" ],
 			"name": "telTempInKelvin",
 			"schema": "double",
