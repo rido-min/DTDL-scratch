@@ -10,9 +10,22 @@
 		"@id": "dtmi:com:example:base;1",
 		"contents": [
 			{
-				"@type": "Property",
-				"name": "baseProp",
-				"schema": "dateTime"
+				"@type": [ "Property", "Distance" ],
+				"name": "currentDistance",
+				"schema": "double",
+				"unit": "metre"
+			},
+			{
+				"@type": "Command",
+				"name": "reboot",
+				"request": {
+					"name": "delay",
+					"schema": "integer"
+				},
+				"response": {
+					"name": "accepted",
+					"schema" : "boolean"
+				}
 			}
 		]
 	},
@@ -26,6 +39,13 @@
 		{
 			"@type": [ "Telemetry", "Temperature" ],
 			"name": "telTempInKelvin",
+			"schema": "double",
+			"unit": "kelvin"
+		},
+		{
+			"@context": "dtmi:dtdl:context;2",
+			"@type": [ "Telemetry", "Temperature" ],
+			"name": "telTempInKelvin_2",
 			"schema": "double",
 			"unit": "kelvin"
 		},
