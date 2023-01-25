@@ -36,10 +36,28 @@ namespace dtdl_dotnet
                 case DTEntityKind.Object:
                     DTObjectInfo o = (DTObjectInfo)s;
                     sb.Append($"{s.EntityKind} ");
-                    o.Fields.ToList().ForEach(f => sb.Append($"[{f.Name} :{ModelParser.GetTermOrUri(f.Schema.Id)}] "));
+                    o.Fields.ToList().ForEach(f => sb.Append(f.Print()));
                     break;
             }
             
+            return sb.ToString();
+        }
+
+        public static string Print(this DTFieldInfo f)
+        {
+            StringBuilder sb = new();
+            sb.Append($"[ {f.Name} : ");
+            if (f.Schema.DefinedIn == f.DefinedIn)
+            {
+                sb.Append(f.Schema.Print());
+            }
+            else
+            {
+                sb.Append(ModelParser.GetTermOrUri(f.Schema.Id));
+            }
+            f.SupplementalTypes.ToList().ForEach(t => sb.Append(" " + ModelParser.GetTermOrUri(t)));
+            f.SupplementalProperties.ToList().ForEach(t => sb.Append(" " + ((DTEnumValueInfo)t.Value).Name));
+            sb.Append("]");
             return sb.ToString();
         }
 
