@@ -9,7 +9,7 @@ namespace dtdl_dotnet
         public static string ToPath(this Dtmi dtmi) => $"{dtmi.ToString().ToLowerInvariant().Replace(":", "/").Replace(";", "-")}.json";
     }
 
-    public static class ModelParserExtensions
+    public static partial class ModelParserExtensions
     {
         public static string Print(this DTSchemaInfo s)
         {
@@ -57,7 +57,7 @@ namespace dtdl_dotnet
             }
             f.SupplementalTypes.ToList().ForEach(t => sb.Append(" " + ModelParser.GetTermOrUri(t)));
             f.SupplementalProperties.ToList().ForEach(t => sb.Append(" " + ((DTEnumValueInfo)t.Value).Name));
-            sb.Append("]");
+            sb.Append(']');
             return sb.ToString();
         }
 
@@ -81,7 +81,16 @@ namespace dtdl_dotnet
             }
             else
             {
-                t.SupplementalProperties.ToList().ForEach(t => sb.Append(" " + ((DTEnumValueInfo)t.Value).Name));
+                t.SupplementalProperties.ToList().ForEach(st => {
+                    if (st.Key == "dtmi:dtdl:extension:quantitativeTypes:v1:property:unit")
+                    {
+                        sb.Append(" " + ((DTEnumValueInfo)st.Value).Name);
+                    }
+                    else
+                    {
+                        sb.Append(" " + st.Value);
+                    }
+                });
             }
             return sb.ToString();
         }
@@ -106,7 +115,16 @@ namespace dtdl_dotnet
             }
             else
             {
-                p.SupplementalProperties.ToList().ForEach(p => sb.Append(" " + ((DTEnumValueInfo)p.Value).Name));
+                p.SupplementalProperties.ToList().ForEach(sp => {
+                    if (sp.Key == "dtmi:dtdl:extension:quantitativeTypes:v1:property:unit")
+                    {
+                        sb.Append(" " + ((DTEnumValueInfo)sp.Value).Name);
+                    }
+                    else
+                    {
+                        sb.Append(" " + sp.Value);
+                    }
+                });
             }
             return sb.ToString();
         }
@@ -158,50 +176,6 @@ namespace dtdl_dotnet
             var compoCmds = compoDef.Contents.Where(c => c.Value.EntityKind == DTEntityKind.Command).Select(cmd => (DTCommandInfo)cmd.Value);
             compoCmds.ToList().ForEach(cmd => sb.AppendLine(cmd.Print(2)));
             return sb.ToString();
-        }
-
-        public class InterfaceInfo
-        {
-            public IReadOnlyDictionary<Dtmi, DTEntityInfo> ObjectModel;
-            public readonly DTEntityInfo root;
-            public InterfaceInfo(IReadOnlyDictionary<Dtmi, DTEntityInfo> m)
-            {
-                ObjectModel = m;
-                root = m.Values.Where(v => v.EntityKind == DTEntityKind.Interface).First(e => e.ChildOf == null);
-            }
-
-            public InterfaceInfo(IReadOnlyDictionary<Dtmi, DTEntityInfo> m, Dtmi dtmi)
-            {
-                ObjectModel = m;
-                root = m[dtmi];
-            }
-
-            public string Id => root.Id.ToString();
-
-            public IEnumerable<DTTelemetryInfo> Telemetries =>
-                ((DTInterfaceInfo)root).Contents
-                    .Where(c => c.Value.EntityKind == DTEntityKind.Telemetry)
-                    .Select(t => (DTTelemetryInfo)t.Value);
-
-            public IEnumerable<DTPropertyInfo> Properties =>
-                ((DTInterfaceInfo)root).Contents
-                    .Where(c => c.Value.EntityKind == DTEntityKind.Property)
-                    .Select(p => (DTPropertyInfo)p.Value);
-
-            public IEnumerable<DTCommandInfo> Commands =>
-                ((DTInterfaceInfo)root).Contents
-                    .Where(c => c.Value.EntityKind == DTEntityKind.Command)
-                    .Select(c => (DTCommandInfo)c.Value);
-
-            public IEnumerable<DTComponentInfo> Components =>
-                ((DTInterfaceInfo)root).Contents
-                    .Where(c => c.Value.EntityKind == DTEntityKind.Component)
-                    .Select(c => (DTComponentInfo)c.Value);
-
-            public IEnumerable<DTRelationshipInfo> Relationships =>
-                ((DTInterfaceInfo)root).Contents
-                    .Where(c => c.Value.EntityKind == DTEntityKind.Relationship)
-                    .Select(r => (DTRelationshipInfo)r.Value);
         }
     }
 }

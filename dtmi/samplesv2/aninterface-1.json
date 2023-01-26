@@ -1,13 +1,14 @@
 {
-  "@context": "dtmi:dtdl:context;2",
+  "@context": "dtmi:dtdl:context;3",
   "@id": "dtmi:samplesv2:anInterface;1",
   "@type": ["Interface"],
   "contents": [
     {
-      "@type": "Property",
+      "@type": [ "Property", "Initialized" ],
       "name": "interval",
       "schema": "integer",
-      "writable" :  true
+      "writable": true,
+      "initialValue" :  1
     }
   ]
 }

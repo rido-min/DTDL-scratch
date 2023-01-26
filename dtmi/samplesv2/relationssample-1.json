@@ -1,0 +1,13 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:samplesv2:relationsSample;1",
+    "@type": ["Interface"],
+    "contents": [
+      {
+        "@type": "Property",
+        "name": "interval",
+        "schema": "integer",
+        "writable" :  true
+      }
+    ]
+  }

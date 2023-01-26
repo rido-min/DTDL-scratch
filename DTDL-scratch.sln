@@ -22,12 +22,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samplesv3", "samplesv3", "{
 		dtmi\samplesv3\anextendedinterface-1.json = dtmi\samplesv3\anextendedinterface-1.json
 		dtmi\samplesv3\aninterface-1.json = dtmi\samplesv3\aninterface-1.json
 		dtmi\samplesv3\centraldemo-1.json = dtmi\samplesv3\centraldemo-1.json
-		dtmi\samplesv3\customSchemas-1.json = dtmi\samplesv3\customSchemas-1.json
 		dtmi\samplesv3\extensions-1.json = dtmi\samplesv3\extensions-1.json
 		dtmi\samplesv3\compos-1.json = dtmi\samplesv3\compos-1.json
 		dtmi\samplesv3\mixingversions-1.json = dtmi\samplesv3\mixingversions-1.json
 		dtmi\samplesv3\quantitativeTypes-1.json = dtmi\samplesv3\quantitativeTypes-1.json
-		dtmi\samplesv3\inlinedemo-1.json = dtmi\samplesv3\inlinedemo-1.json
 		dtmi\samplesv3\quantitativeTypes-2.json = dtmi\samplesv3\quantitativeTypes-2.json
 	EndProjectSection
 EndProject
@@ -53,6 +51,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sensors", "sensors", "{0DE8
 		dtmi\azureiot\paad\sensors\magnet-1.json = dtmi\azureiot\paad\sensors\magnet-1.json
 		dtmi\azureiot\paad\sensors\movement-1.json = dtmi\azureiot\paad\sensors\movement-1.json
 		dtmi\azureiot\paad\sensors\pressure-1.json = dtmi\azureiot\paad\sensors\pressure-1.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "extensions", "extensions", "{F44055F9-D246-48A6-A730-36DB90B19382}"
+	ProjectSection(SolutionItems) = preProject
+		dtmi\samplesv3\extensions\annotationSample-1.json = dtmi\samplesv3\extensions\annotationSample-1.json
+		dtmi\samplesv3\extensions\historizationsample-1.json = dtmi\samplesv3\extensions\historizationsample-1.json
+		dtmi\samplesv3\extensions\streamingsample-1.json = dtmi\samplesv3\extensions\streamingsample-1.json
 	EndProjectSection
 EndProject
 Global
@@ -82,6 +87,7 @@ Global
 		{2DD1AF63-8E57-4D5D-ACE7-5D9217F26165} = {544EFB73-2793-41BE-9822-A4E2A82A7AD6}
 		{1F56BD12-F94E-40C1-9800-2441804C635F} = {544EFB73-2793-41BE-9822-A4E2A82A7AD6}
 		{0DE866EC-A6CA-42F0-9F52-5F03B4A1D7F5} = {1F56BD12-F94E-40C1-9800-2441804C635F}
+		{F44055F9-D246-48A6-A730-36DB90B19382} = {2DD1AF63-8E57-4D5D-ACE7-5D9217F26165}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2C2BF066-23AF-4B46-A93E-32B6413FADC9}

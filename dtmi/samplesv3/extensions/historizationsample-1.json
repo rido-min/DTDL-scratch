@@ -1,0 +1,17 @@
+{
+    "@context": [
+        "dtmi:dtdl:context;3",
+        "dtmi:dtdl:extension:historization;1"
+    ],
+    "@id": "dtmi:samplesv3:extensions:historizationSample;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": [ "Property", "Historized" ],
+        "name": "setPointTemp",
+        "writable": true,
+        "schema": "double"
+      }
+    ]
+  }
+  

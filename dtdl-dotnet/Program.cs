@@ -12,7 +12,7 @@ var parser = new ModelParser()
     //DtmiResolverAsync = DmrClient.DtmiResolverAsync
 };
 
-string dtmi = "dtmi:samplesv3:quantitativeTypes;2";
+string dtmi = "dtmi:samplesv2:anInterface;1";
 Console.WriteLine($"MaxDtdlVersion: {parser.MaxDtdlVersion}");
 
 Console.WriteLine();

@@ -13,12 +13,6 @@
       "unit": "kelvin"
     },
     {
-      "@type": [ "Property", "Distance" ],
-      "name": "myDistance",
-      "schema": "integer",
-      "unit": "mile"
-    },
-    {
       "@type": "Command",
       "name": "reboot",
       "request": {
