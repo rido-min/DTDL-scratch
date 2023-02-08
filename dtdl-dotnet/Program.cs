@@ -13,6 +13,7 @@ var parser = new ModelParser(new ClientOptions()
 });
 
 string dtmi = "dtmi:azureiot:PaaD:IoTPhone;1";
+Console.WriteLine($"Parser version: {parser.GetType().Assembly.FullName}");
 Console.WriteLine($"MaxDtdlVersion: ?");
 
 Console.WriteLine();
@@ -20,7 +21,6 @@ Console.WriteLine(dtmi);
 Console.WriteLine();
 
 var model = await dmrClient.GetModelAsync(dtmi, ModelDependencyResolution.Disabled);
-
 ModelParserExtensions.InterfaceInfo? parserResult = null;
 
 
