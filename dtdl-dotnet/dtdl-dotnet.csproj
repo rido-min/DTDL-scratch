@@ -9,12 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.IoT.ModelsRepository" Version="1.0.0-preview.5" />
-    <PackageReference Include="DTDLParser" Version="0.1.3" />
+    <Folder Include="Properties\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <PackageReference Include="Azure.IoT.ModelsRepository" Version="1.0.0-preview.5" />
+    <PackageReference Include="DTDLParser" Version="1.0.68-preview" />
   </ItemGroup>
 
 </Project>

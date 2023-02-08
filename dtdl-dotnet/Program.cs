@@ -6,14 +6,14 @@ using DTDLParser.Models;
 string basePath = Path.Join(System.Reflection.Assembly.GetExecutingAssembly().Location + @"./../../../../../");
 var dmrClient = new ModelsRepositoryClient(new Uri(basePath));
 
-var parser = new ModelParser() 
-{ 
+var parser = new ModelParser(new ClientOptions()
+{
     DtmiResolverAsync = dmrClient.ParserDtmiResolverAsync
     //DtmiResolverAsync = DmrClient.DtmiResolverAsync
-};
+});
 
-string dtmi = "dtmi:samplesv2:anInterface;1";
-Console.WriteLine($"MaxDtdlVersion: {parser.MaxDtdlVersion}");
+string dtmi = "dtmi:azureiot:PaaD:IoTPhone;1";
+Console.WriteLine($"MaxDtdlVersion: ?");
 
 Console.WriteLine();
 Console.WriteLine(dtmi);

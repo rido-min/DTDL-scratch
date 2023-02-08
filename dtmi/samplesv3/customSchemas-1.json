@@ -1,85 +1,29 @@
 {
-	"@context": [
-		"dtmi:dtdl:context;3",
-		"dtmi:dtdl:extension:quantitativeTypes;1"
-	],
-	"@id": "dtmi:samplesv3:customSchemas;1",
-	"@type": "Interface",
-	"schemas": [
-		{
-			"@id": "dtmi:com:example:baseSchema;1",
-			"@type": "Map",
-			"mapKey": {
-				"name": "myKey",
-				"schema": "string"
-			},
-			"mapValue": {
-				"@type": [ "MapValue", "Distance" ],
-				"name": "count",
-				"schema": "double",
-				"unit" :  "metre"
-			}
-		},
-		{
-			"@id": "dtmi:mySchemas:ArrayOfDates;1",
-			"@type": "Array",
-			"elementSchema": "dateTime"
-		},
-		{
-			"@id": "dtmi:mySchemas:OffOnEnum;1",
-			"@type": "Enum",
-			"valueSchema": "integer",
-			"enumValues": [
-				{
-					"name": "On",
-					"enumValue": 1
-				},
-				{
-					"name": "Off",
-					"enumValue": 0
-				}
-			]
-		},
-		{
-			"@type": "Object",
-			"@id": "dtmi:mySchemas:myObject;1",
-			"fields": [
-				{
-					"name": "name",
-					"schema": "string"
-				},
-				{
-					"name": "age",
-					"schema": "integer"
-				}
-			]
-		}
-	],
-	"contents": [
-		{
-			"@type": "Property",
-			"name": "myString",
-			"schema": "string"
-		},
-		{
-			"@type": [ "Property" ],
-			"name": "myBasePropWithSchema",
-			"schema": "dtmi:com:example:baseSchema;1"
-		},
-		{
-			"@type": "Property",
-			"name": "myCustomArray",
-			"schema": "dtmi:mySchemas:ArrayOfDates;1"
-		},
-		{
-			"@type": "Property",
-			"name": "myEnumOnOff",
-			"schema": "dtmi:mySchemas:OffOnEnum;1"
-		},
-		{
-			"@type": "Property",
-			"name": "Person",
-			"schema": "dtmi:mySchemas:myObject;1"
-		}
-	]
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:samples:customSchemas;1",
+  "@type": "Interface",
+  "schemas": [
+    {
+      "@id": "dtmi:samples:customSchemas:OffOnEnum;1",
+      "@type": "Enum",
+      "valueSchema": "integer",
+      "enumValues": [
+        {
+          "name": "On",
+          "enumValue": 1
+        },
+        {
+          "name": "Off",
+          "enumValue": 0
+        }
+      ]
+    }
+  ],
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "myEnumOnOff",
+      "schema": "dtmi:samples:customSchemas:OffOnEnum;1"
+    }
+  ]
 }
