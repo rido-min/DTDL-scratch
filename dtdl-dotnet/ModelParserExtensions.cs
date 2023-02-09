@@ -164,18 +164,5 @@ namespace dtdl_dotnet
             }
             return sb.ToString();
         }
-
-        public static string Print(this DTComponentInfo compo, DTInterfaceInfo compoDef)
-        {
-            StringBuilder sb = new();
-            sb.AppendLine($"[Co] {compo.Name} ");
-            var compoTels = compoDef.Contents.Where(c => c.Value.EntityKind == DTEntityKind.Telemetry).Select(t => (DTTelemetryInfo)t.Value);
-            compoTels.ToList().ForEach(t => sb.AppendLine(t.Print(2)));
-            var compoProps = compoDef.Contents.Where(c => c.Value.EntityKind == DTEntityKind.Property).Select(p => (DTPropertyInfo)p.Value);
-            compoProps.ToList().ForEach(p => sb.AppendLine(p.Print(2)));
-            var compoCmds = compoDef.Contents.Where(c => c.Value.EntityKind == DTEntityKind.Command).Select(cmd => (DTCommandInfo)cmd.Value);
-            compoCmds.ToList().ForEach(cmd => sb.AppendLine(cmd.Print(2)));
-            return sb.ToString();
-        }
     }
 }
