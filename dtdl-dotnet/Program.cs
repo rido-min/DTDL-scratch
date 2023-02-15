@@ -6,7 +6,7 @@ using static dtdl_dotnet.ModelParserExtensions;
 string basePath = Path.Join(System.Reflection.Assembly.GetExecutingAssembly().Location + @"./../../../../../");
 var dmrClient = new ModelsRepositoryClient(new Uri(basePath));
 
-var parser = new ModelParser(new ClientOptions()
+var parser = new ModelParser(new ParsingOptions()
 {
     DtmiResolverAsync = dmrClient.ParserDtmiResolverAsync
 });
